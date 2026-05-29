@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Library</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: radial-gradient(circle at top, #1e293b, #0f172a 60%, #020617);
+            color: #e2e8f0;
+        }
+
+        .container {
+            width: 92%;
+            margin: auto;
+            padding: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 25px;
+            font-size: 44px;
+            font-weight: 900;
+            color: #38bdf8;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        th {
+            background: #0b1220;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        tr:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .empty {
+            text-align: center;
+            margin-top: 40px;
+            color: #94a3b8;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+        /* 🔥 REMOVE BUTTON */
+        .remove-btn {
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .remove-btn:hover {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>❤️ My Library</h1>
+
+    {% if books %}
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Action</th>
+            </tr>
+
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.rating }}</td>
+
+                <!-- 🔥 REMOVE BUTTON ADDED -->
+                <td>
+                    <a href="/remove_favorite/{{ book.id }}" class="remove-btn">
+                        ❌ Remove
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    {% else %}
+
+        <div class="empty">
+            No favorite books yet 😕
+        </div>
+
+    {% endif %}
+
+    <div class="back">
+        <a href="/">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>
